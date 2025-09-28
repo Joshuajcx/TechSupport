@@ -16,8 +16,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const getApiUrl = () => {
   if (Platform.OS === "android") {
+    // Emulador de Android usa
     return "http://10.0.2.2:3000";
   } else {
+    // iOS y otros dispositivos usan localhost
     return "http://localhost:3000";
   }
 };
