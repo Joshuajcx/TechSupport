@@ -8,9 +8,19 @@ import {
   ImageBackground,
   SafeAreaView,
   Alert,
-  ActivityIndicator
+  ActivityIndicator,
+  Platform
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
+
+const getApiUrl = () => {
+  if (Platform.OS === "android") {
+    return "http://10.0.2.2:3000";
+  } else {
+    return "http://localhost:3000";
+  }
+};
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -47,7 +57,7 @@ const LoginScreen = ({ navigation }) => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://10.0.2.2:3000/api/login", {
+      const response = await fetch(`${getApiUrl()}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -59,16 +69,11 @@ const LoginScreen = ({ navigation }) => {
 
       const data = await response.json();
 
-      if (!data || typeof data !== 'object') {
-        throw new Error("Respuesta del servidor inválida");
-      }
-
       if (data.success) {
         const tokenSaved = await safeSetItem("token", data.token);
         
-        let userSaved = false;
         if (data.user && typeof data.user === 'object') {
-          userSaved = await safeSetItem("user", JSON.stringify(data.user));
+          await safeSetItem("user", JSON.stringify(data.user));
         }
 
         if (tokenSaved) {
@@ -84,11 +89,11 @@ const LoginScreen = ({ navigation }) => {
       console.error("Error en login:", error);
       
       if (error.message.includes('Network request failed')) {
-        Alert.alert("Error", "No se pudo conectar al servidor. Verifica tu conexión.");
+        Alert.alert("Error", "No se pudo conectar al servidor. Verifica tu conexión y URL.");
       } else if (error.message.includes('HTTP')) {
         Alert.alert("Error", "Error del servidor. Intenta más tarde.");
       } else {
-        Alert.alert("Error", "Error inesperado. Verifica la consola para más detalles.");
+        Alert.alert("Error", "Error inesperado. Revisa la consola para más detalles.");
       }
     } finally {
       setLoading(false);

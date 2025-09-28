@@ -8,7 +8,17 @@ import {
   ImageBackground,
   SafeAreaView,
   Alert,
+  Platform,
 } from "react-native";
+
+
+const getApiUrl = () => {
+  if (Platform.OS === "android") {
+    return "http://10.0.2.2:3000";
+  } else {
+    return "http://localhost:3000";
+  }
+};
 
 const RegisterScreen = ({ navigation }) => {
   const [name, setName] = useState("");
@@ -28,7 +38,7 @@ const RegisterScreen = ({ navigation }) => {
     }
 
     try {
-      const response = await fetch("http://10.0.2.2:3000/api/register", {
+      const response = await fetch(`${getApiUrl()}/api/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
@@ -38,13 +48,16 @@ const RegisterScreen = ({ navigation }) => {
 
       if (data.success) {
         Alert.alert("Éxito", "Usuario registrado correctamente");
-        navigation.navigate("Login"); // Redirige a Login después del registro
+        navigation.navigate("Login");
       } else {
         Alert.alert("Error", data.message || "No se pudo registrar al usuario");
       }
     } catch (error) {
-      console.error(error);
-      Alert.alert("Error", "Error en la conexión con el servidor");
+      console.error("Error al conectar al servidor:", error);
+      Alert.alert(
+        "Error",
+        `No se pudo conectar al servidor. Asegúrate de que esté corriendo y de usar la IP correcta.`
+      );
     }
   };
 
@@ -121,16 +134,9 @@ const RegisterScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  backgroundImage: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  backgroundImageStyle: {
-    opacity: 0.8,
-  },
+  container: { flex: 1 },
+  backgroundImage: { flex: 1, justifyContent: "center" },
+  backgroundImageStyle: { opacity: 0.8 },
   overlay: {
     flex: 1,
     backgroundColor: "rgba(37, 99, 235, 0.85)",
@@ -138,24 +144,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
   },
-  content: {
-    width: "100%",
-    maxWidth: 320,
-    alignItems: "center",
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "white",
-    marginBottom: 10,
-    textAlign: "center",
-  },
-  subtitle: {
-    fontSize: 16,
-    color: "white",
-    marginBottom: 30,
-    textAlign: "center",
-  },
+  content: { width: "100%", maxWidth: 320, alignItems: "center" },
+  title: { fontSize: 32, fontWeight: "bold", color: "white", marginBottom: 10, textAlign: "center" },
+  subtitle: { fontSize: 16, color: "white", marginBottom: 30, textAlign: "center" },
   input: {
     width: "100%",
     backgroundColor: "rgba(255,255,255,0.15)",
@@ -166,31 +157,11 @@ const styles = StyleSheet.create({
     color: "white",
     marginBottom: 15,
   },
-  button: {
-    width: "100%",
-    paddingVertical: 15,
-    borderRadius: 25,
-    alignItems: "center",
-    marginTop: 10,
-  },
-  primaryButton: {
-    backgroundColor: "white",
-  },
-  primaryButtonText: {
-    color: "#2563eb",
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  secondaryButton: {
-    borderWidth: 2,
-    borderColor: "white",
-    backgroundColor: "transparent",
-  },
-  secondaryButtonText: {
-    color: "white",
-    fontSize: 18,
-    fontWeight: "600",
-  },
+  button: { width: "100%", paddingVertical: 15, borderRadius: 25, alignItems: "center", marginTop: 10 },
+  primaryButton: { backgroundColor: "white" },
+  primaryButtonText: { color: "#2563eb", fontSize: 18, fontWeight: "bold" },
+  secondaryButton: { borderWidth: 2, borderColor: "white", backgroundColor: "transparent" },
+  secondaryButtonText: { color: "white", fontSize: 18, fontWeight: "600" },
 });
 
 export default RegisterScreen;
