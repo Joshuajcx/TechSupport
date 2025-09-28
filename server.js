@@ -2,19 +2,22 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
 
-const JWT_SECRET = "200599";
+const PORT = process.env.PORT || 3000;
+const JWT_SECRET = process.env.JWT_SECRET || "default_secret";
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/techsupport";
 
-
-mongoose.connect("mongodb://127.0.0.1:27017/techsupport", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(MONGO_URI)
+  .then(() => console.log("Conectado a MongoDB"))
+  .catch(err => console.error("Error al conectar a MongoDB:", err));
 
 
 const UserSchema = new mongoose.Schema({
@@ -24,18 +27,13 @@ const UserSchema = new mongoose.Schema({
 });
 const User = mongoose.model("User", UserSchema);
 
-
 app.post("/api/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ 
-        success: false, 
-        message: "El usuario ya existe" 
-      });
+      return res.status(400).json({ success: false, message: "El usuario ya existe" });
     }
 
     const user = new User({ name, email, password });
@@ -47,70 +45,47 @@ app.post("/api/register", async (req, res) => {
   }
 });
 
-
 app.post("/api/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    
+
     if (!email || !password) {
-      return res.status(400).json({ 
-        success: false, 
-        message: "Email y contraseña son requeridos" 
-      });
+      return res.status(400).json({ success: false, message: "Email y contraseña son requeridos" });
     }
 
-    const user = await User.findOne({ email, password });
-
+    const user = await User.findOne({ email, password }); // ⚠️ compara en texto plano
     if (!user) {
-      return res.status(401).json({ 
-        success: false, 
-        message: "Credenciales inválidas" 
-      });
+      return res.status(401).json({ success: false, message: "Credenciales inválidas" });
     }
 
     const token = jwt.sign(
-      { 
-        userId: user._id, 
-        email: user.email 
-      }, 
-      JWT_SECRET, 
+      { userId: user._id, email: user.email },
+      JWT_SECRET,
       { expiresIn: "24h" }
     );
 
-    res.json({ 
-      success: true, 
+    res.json({
+      success: true,
       message: "Login exitoso",
-      token: token, 
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email
-      }
+      token,
+      user: { id: user._id, name: user.name, email: user.email }
     });
 
   } catch (error) {
     console.error("Error en login:", error);
-    res.status(500).json({ 
-      success: false, 
-      message: "Error interno del servidor" 
-    });
+    res.status(500).json({ success: false, message: "Error interno del servidor" });
   }
 });
 
 app.get("/api/verify", async (req, res) => {
   try {
     const token = req.headers.authorization?.split(" ")[1];
-    
-    if (!token) {
-      return res.status(401).json({ success: false, message: "Token requerido" });
-    }
+    if (!token) return res.status(401).json({ success: false, message: "Token requerido" });
 
     const decoded = jwt.verify(token, JWT_SECRET);
     const user = await User.findById(decoded.userId).select("-password");
-    
-    if (!user) {
-      return res.status(404).json({ success: false, message: "Usuario no encontrado" });
-    }
+
+    if (!user) return res.status(404).json({ success: false, message: "Usuario no encontrado" });
 
     res.json({ success: true, user });
   } catch (error) {
@@ -118,4 +93,4 @@ app.get("/api/verify", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("Servidor corriendo en http://localhost:3000"));
+app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
