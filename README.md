@@ -49,7 +49,7 @@ TechSupport permite a los usuarios **reportar incidencias**, **dar seguimiento a
 
 ## ⚙️ Instalación y configuración  
 
-```bash
+
 # 1. Clonar el repositorio
 git clone https://github.com/TU_USUARIO/TechSupport.git
 cd TechSupport
