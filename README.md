@@ -28,8 +28,7 @@ TechSupport permite a los usuarios **reportar incidencias**, **dar seguimiento a
 ### 🔹 Base de datos  
 ![MongoDB](https://img.shields.io/badge/Database-MongoDB-green?logo=mongodb&logoColor=white)  
 
-### 🔹 Otras herramientas  
-![Firebase](https://img.shields.io/badge/Firebase-FFCA28?logo=firebase&logoColor=black)  
+### 🔹 Otras herramientas   
 ![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)  
 ![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)  
 ![VSCode](https://img.shields.io/badge/Editor-VSCode-007ACC?logo=visualstudiocode&logoColor=white)  
