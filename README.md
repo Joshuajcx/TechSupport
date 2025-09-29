@@ -68,6 +68,7 @@ TechSupport permite a los usuarios **reportar incidencias**, **dar seguimiento a
 6. Iniciar la app en Android:
    ```bash
    npx react-native run-android
+
    O en iOS:
-  ```bash
+   ```bash
    npx react-native run-ios
