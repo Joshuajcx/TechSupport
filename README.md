@@ -55,7 +55,7 @@ TechSupport permite a los usuarios **reportar incidencias**, **dar seguimiento a
    cd TechSupport
 2. Instalar dependencias:
    npm install
-   # o
+   o
    ```bash
    yarn install
 4. Configurar variables de entorno:
@@ -68,6 +68,6 @@ TechSupport permite a los usuarios **reportar incidencias**, **dar seguimiento a
 6. Iniciar la app en Android:
    ```bash
    npx react-native run-android
-# O en iOS:
+   O en iOS:
   ```bash
-  npx react-native run-ios
+   npx react-native run-ios
