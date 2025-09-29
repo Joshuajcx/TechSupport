@@ -1,79 +1,131 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+¡Perfecto! 🙌 Entonces el **backend de TechSupport** se conecta con **MongoDB** (y no con SQL u otro motor). Te armo un README ajustado a eso, con badges de tecnologías, roadmap y espacio para futuras descargas 📲.
 
-# Getting Started
+Aquí lo tienes:
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+---
 
-## Step 1: Start the Metro Server
+````markdown
+# 🛠️ TechSupport  
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+Aplicación móvil desarrollada en **React Native** con **MongoDB** como base de datos.  
+TechSupport permite a los usuarios **reportar incidencias**, **dar seguimiento a tickets** y **conectarse con técnicos de soporte** de manera sencilla desde Android o iOS.  
 
-To start Metro, run the following command from the _root_ of your React Native project:
+---
 
-```bash
-# using npm
-npm start
+## 🚀 Características principales  
+- 📱 **Login y registro** de usuarios con autenticación segura  
+- 📝 Creación, asignación y seguimiento de **tickets de soporte**  
+- 🔔 Notificaciones en tiempo real (Firebase)  
+- 👨‍💻 Panel para técnicos con estado de incidencias  
+- 🌐 Disponible para **Android e iOS**  
 
-# OR using Yarn
-yarn start
+---
+
+## 🛠️ Tecnologías utilizadas  
+
+### 🔹 Frontend  
+![React Native](https://img.shields.io/badge/React%20Native-61DAFB?logo=react&logoColor=white)  
+![React Navigation](https://img.shields.io/badge/Navigation-React%20Navigation-blue?logo=reactrouter)  
+![AsyncStorage](https://img.shields.io/badge/Storage-AsyncStorage-lightgrey)  
+
+### 🔹 Backend  
+![Node.js](https://img.shields.io/badge/Node.js-43853D?logo=node.js&logoColor=white)  
+![Express](https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=white)  
+
+### 🔹 Base de datos  
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-green?logo=mongodb&logoColor=white)  
+
+### 🔹 Otras herramientas  
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?logo=firebase&logoColor=black)  
+![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)  
+![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)  
+![VSCode](https://img.shields.io/badge/Editor-VSCode-007ACC?logo=visualstudiocode&logoColor=white)  
+
+---
+
+## 📸 Capturas de pantalla  
+
+> *(Agrega imágenes de la app para mostrar su interfaz: login, tickets, dashboard…)*  
+
+| Login | Dashboard | Ticket |
+|-------|-----------|--------|
+| ![Login](./screenshots/login.png) | ![Dashboard](./screenshots/dashboard.png) | ![Ticket](./screenshots/ticket.png) |
+
+---
+
+## ⚙️ Instalación y configuración  
+
+1. Clonar este repositorio:  
+   ```bash
+   git clone https://github.com/TU_USUARIO/TechSupport.git
+   cd TechSupport
+````
+
+2. Instalar dependencias:
+
+   ```bash
+   npm install
+   # o
+   yarn install
+   ```
+
+3. Configurar variables de entorno:
+   Crea un archivo `.env` en la raíz con:
+
+   ```env
+   MONGO_URI=mongodb+srv://USUARIO:CLAVE@cluster.mongodb.net/techsupport
+   FIREBASE_API_KEY=tu_api_key
+   FIREBASE_PROJECT_ID=tu_project_id
+   ```
+
+4. Iniciar la app en **Android**:
+
+   ```bash
+   npx react-native run-android
+   ```
+
+   O en **iOS**:
+
+   ```bash
+   npx react-native run-ios
+   ```
+
+---
+
+## 📌 Roadmap
+
+* [ ] Chat en tiempo real entre usuario y técnico
+* [ ] Modo offline para registrar incidencias sin internet
+* [ ] Exportar reportes en PDF/Excel
+* [ ] Panel web para administradores
+
+---
+
+## 📦 Descargas
+
+🔜 Aquí podrás encontrar los **builds de prueba**:
+
+* 📱 [APK Android](./releases)
+* 🍏 [TestFlight iOS](./releases)
+
+---
+
+## 🤝 Contribuciones
+
+Las contribuciones son bienvenidas 🎉.
+Abre un **issue** o un **pull request** con tus ideas y mejoras.
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo la licencia **MIT** – consulta el archivo [LICENSE](./LICENSE) para más información.
+
 ```
 
-## Step 2: Start your Application
+---
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+👉 Este README ya refleja que la base de datos es **MongoDB**.  
 
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+¿Quieres que también le agregue una sección de **arquitectura (Frontend + Backend + DB)** con un diagrama sencillo en markdown o prefieres mantenerlo más limpio por ahora?
 ```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
