@@ -50,31 +50,28 @@ TechSupport permite a los usuarios **reportar incidencias**, **dar seguimiento a
 ## ⚙️ Instalación y configuración  
 
 
-# 1. Clonar el repositorio
+1. Clonar el repositorio
 git clone https://github.com/TU_USUARIO/TechSupport.git
 cd TechSupport
 
-# 2. Instalar dependencias
+2. Instalar dependencias
 npm install
-# o con yarn
+#o con yarn
 yarn install
 
-# 3. Configurar variables de entorno
-# Crear un archivo .env en la raíz con:
-# PORT=3000
-# MONGO_URI=mongodb://localhost:27017/techsupport
-# JWT_SECRET=tu_secreto_aqui
-# FIREBASE_API_KEY=tu_api_key
-# FIREBASE_PROJECT_ID=tu_project_id
+3. Configurar variables de entorno
+Crear un archivo .env en la raíz con:
+PORT=3000
+MONGO_URI=mongodb://localhost:27017/techsupport
+JWT_SECRET=tu_secreto_aqui
 
-# 4. Iniciar la app en Android
+4. Iniciar la app en Android
 npx react-native run-android
 
-# 5. Iniciar la app en iOS
+5. Iniciar la app en iOS
 npx react-native run-ios
 
-# 6. (Opcional) Iniciar el backend local si aplica
+6. Iniciar el backend local si aplica
 node server.js
-# o npm run dev si tienes nodemon configurado
 
-# 7. Abrir la app en el emulador o dispositivo físico y probar
+7. Abrir la app en el emulador o dispositivo físico y probar
