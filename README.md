@@ -51,33 +51,33 @@ TechSupport permite a los usuarios **reportar incidencias**, **dar seguimiento a
 
 
 1. Clonar el repositorio
- ```bash
+
 git clone https://github.com/TU_USUARIO/TechSupport.git
 cd TechSupport
 
 2. Instalar dependencias
-```bash
+
 npm install
-#o con yarn
+o con yarn
 yarn install
 
 3. Configurar variables de entorno
 Crear un archivo .env en la raíz con:
-```bash
+
 PORT=3000
 MONGO_URI=mongodb://localhost:27017/techsupport
 JWT_SECRET=tu_secreto_aqui
 
 4. Iniciar la app en Android
-```bash
+
 npx react-native run-android
 
 5. Iniciar la app en iOS
-```bash
+
 npx react-native run-ios
 
 6. Iniciar el backend local si aplica
-```bash
+
 node server.js
 
 7. Abrir la app en el emulador o dispositivo físico y probar
