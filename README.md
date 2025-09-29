@@ -42,7 +42,8 @@ TechSupport permite a los usuarios **reportar incidencias**, **dar seguimiento a
 
 | Login | Dashboard | Ticket |
 |-------|-----------|--------|
-| ![Login](./screenshots/login.png) | ![Dashboard](./screenshots/dashboard.png) | ![Ticket](./screenshots/ticket.png) |
+| ![Login](./screenshots/login.PNG) | ![Dashboard](./screenshots/Dashboard.PNG) | ![Ticket](./screenshots/ticket.PNG) |
+
 
 ---
 
@@ -52,3 +53,16 @@ TechSupport permite a los usuarios **reportar incidencias**, **dar seguimiento a
    ```bash
    git clone https://github.com/TU_USUARIO/TechSupport.git
    cd TechSupport
+2. Instalar dependencias:
+   npm install
+   # o
+   yarn install
+3. Configurar variables de entorno:
+   Crea un archivo .env en la raíz con:
+   PORT=3000
+   MONGO_URI=mongodb://localhost:27017/
+   JWT_SECRET=
+4. Iniciar la app en Android:
+   npx react-native run-android
+# O en iOS:
+  npx react-native run-ios
