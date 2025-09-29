@@ -56,13 +56,18 @@ TechSupport permite a los usuarios **reportar incidencias**, **dar seguimiento a
 2. Instalar dependencias:
    npm install
    # o
+   ```bash
    yarn install
-3. Configurar variables de entorno:
+4. Configurar variables de entorno:
    Crea un archivo .env en la raíz con:
+   ```bash
    PORT=3000
    MONGO_URI=mongodb://localhost:27017/
    JWT_SECRET=
-4. Iniciar la app en Android:
+   
+6. Iniciar la app en Android:
+   ```bash
    npx react-native run-android
 # O en iOS:
+  ```bash
   npx react-native run-ios
