@@ -8,7 +8,7 @@ TechSupport permite a los usuarios **reportar incidencias**, **dar seguimiento a
 ## 🚀 Características principales  
 - 📱 **Login y registro** de usuarios con autenticación segura  
 - 📝 Creación, asignación y seguimiento de **tickets de soporte**  
-- 🔔 Notificaciones en tiempo real (Firebase)  
+- 🔔 Notificaciones en tiempo real
 - 👨‍💻 Panel para técnicos con estado de incidencias  
 - 🌐 Disponible para **Android e iOS**  
 
