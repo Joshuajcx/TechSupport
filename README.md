@@ -57,7 +57,9 @@ cd TechSupport
 2. Instalar dependencias
 
 npm install
+
 o con yarn
+
 yarn install
 
 3. Configurar variables de entorno
